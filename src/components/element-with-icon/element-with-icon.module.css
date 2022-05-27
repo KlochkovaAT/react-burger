@@ -1,0 +1,9 @@
+.element-with-icon {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+}
+
+.element-with-icon__spacer {
+  width: 32px;
+}

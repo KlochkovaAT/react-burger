@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  width: 272px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card__counter {
+    position: absolute;
+}
+.card__price {
+  display: flex;
+  font-family: 'IceLand';
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 24px;
+  align-items: center;
+  margin: 0px;
+}
+
+.card__name {
+  size: 16px;
+  line-height: 24px;
+  margin: 0px;
+}
