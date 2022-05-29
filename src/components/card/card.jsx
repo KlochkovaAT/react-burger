@@ -17,10 +17,10 @@ const Card = ({ image, price, name, count }) => {
 };
 
 Card.propTypes = {
-  image: PropTypes.string,
-  price: PropTypes.number,
-  name: PropTypes.string,
-  count: PropTypes.number,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  count: PropTypes.number
 };
 
 export default Card;

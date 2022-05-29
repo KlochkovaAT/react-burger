@@ -1,6 +1,7 @@
 import stylesCardList from './card-list.module.css';
 import Card from '../card/card';
 import PropTypes from 'prop-types';
+import dataPropTypes from '../../components/utils/constants';
 
 const CardList = ({ title, cards }) => {
   return (
@@ -17,7 +18,7 @@ const CardList = ({ title, cards }) => {
 
 CardList.propTypes = {
   title: PropTypes.string,
-  cards: PropTypes.arrayOf(Card.propTypes)
+  cards: PropTypes.arrayOf(dataPropTypes.isRequired).isRequired
 };
 
 export default CardList;

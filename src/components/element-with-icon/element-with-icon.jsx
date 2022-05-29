@@ -1,6 +1,6 @@
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
-import styles from './element-with-icon.module.css'
+import styles from './element-with-icon.module.css';
 
 const ElementWithIcon = ({ text, price, thumbnail, type, isLocked }) => {
   return (
