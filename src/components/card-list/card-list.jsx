@@ -1,7 +1,7 @@
 import stylesCardList from './card-list.module.css';
 import Card from '../card/card';
 import PropTypes from 'prop-types';
-import dataPropTypes from '../../components/utils/constants';
+import { dataPropTypes } from '../../components/utils/constants';
 
 const CardList = ({ title, cards }) => {
   return (

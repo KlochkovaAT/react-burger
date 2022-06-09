@@ -2,8 +2,8 @@ import stylesIngredients from './burger-ingredients.module.css';
 import Tabs from '../tabs/tabs';
 import CardList from '../card-list/card-list';
 import PropTypes from 'prop-types';
-import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css'
-import dataPropTypes from '../../components/utils/constants';
+import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css';
+import { dataPropTypes } from '../../components/utils/constants';
 
 const BurgerIngredients = ({ title, ingredients }) => {
   return (
@@ -27,7 +27,7 @@ const BurgerIngredients = ({ title, ingredients }) => {
 
 BurgerIngredients.propTypes = {
   title: PropTypes.string,
-  ingredients: PropTypes.arrayOf(dataPropTypes.isRequired).isRequired
+  ingredients: PropTypes.arrayOf(dataPropTypes.isRequired).isRequired,
 };
 
 export default BurgerIngredients;

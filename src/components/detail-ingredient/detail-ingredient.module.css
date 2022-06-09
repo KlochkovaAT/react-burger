@@ -1,0 +1,54 @@
+.detail-ingredient {
+  font-family: 'Jet Brains Mono';
+}
+
+.detail-ingredient__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.detail-ingredient__card {
+  width: 520px;
+  margin-left: 60px;
+}
+
+.detail-ingredient__image {
+  margin: auto;
+  display: block;
+  width: 480px;
+}
+
+.detail-ingredient__description {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0;
+  text-align: center;
+}
+
+.detail-ingredient__property-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0px 0px 20px;
+  padding: 0;
+}
+
+.detail-ingredient__property {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 112px;
+  gap: 8px;
+  color: #8585ad;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.detail-ingredient__property-value {
+    font-family: Iceland;
+    font-size: 28px;
+    line-height: 24px;
+  }
