@@ -3,9 +3,12 @@ import Tabs from '../tabs/tabs';
 import CardList from '../card-list/card-list';
 import PropTypes from 'prop-types';
 import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css';
-import { dataPropTypes } from '../../components/utils/constants';
+import { useContext } from "react";
+import BurgerIngredientsContext from '../burger-ingredients-context/burger-ingredients-context';
 
-const BurgerIngredients = ({ title, ingredients }) => {
+const BurgerIngredients = ({ title }) => {
+  const ingredients = useContext(BurgerIngredientsContext);
+
   return (
     <section className={`${stylesIngredients['burger-ingredients']} mr-10`}>
       <h1 className={`${stylesIngredients['burger-ingredients__title']} mt-10 mb-5`}>{title}</h1>
@@ -26,8 +29,7 @@ const BurgerIngredients = ({ title, ingredients }) => {
 };
 
 BurgerIngredients.propTypes = {
-  title: PropTypes.string,
-  ingredients: PropTypes.arrayOf(dataPropTypes.isRequired).isRequired,
+  title: PropTypes.string
 };
 
 export default BurgerIngredients;

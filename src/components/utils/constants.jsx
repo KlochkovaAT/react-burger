@@ -15,5 +15,6 @@ const dataPropTypes = PropTypes.shape({
 
 const dataUrl = 'https://norma.nomoreparties.space/api/ingredients';
 const modalElementId = 'react-modals';
+const createOrderUrl = 'https://norma.nomoreparties.space/api/orders';
 
-export { dataPropTypes, dataUrl, modalElementId };
+export { dataPropTypes, dataUrl, modalElementId, createOrderUrl };

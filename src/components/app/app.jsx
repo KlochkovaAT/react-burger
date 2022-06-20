@@ -3,6 +3,8 @@ import Header from '../app-header/app-header';
 import styles from './app.module.css';
 import Content from '../content/content';
 import { dataUrl } from '../utils/constants';
+import BurgerIngredientsContext from '../burger-ingredients-context/burger-ingredients-context';
+import BurgerConstructorContext from '../burger-constructor-context/burger-constructor-context';
 
 function App() {
   const [data, setData] = useState();
@@ -34,7 +36,11 @@ function App() {
   return (
     <div className={styles.App}>
       <Header />
-      {selectedBurger && <Content data={data} burger={selectedBurger} />}
+      <BurgerIngredientsContext.Provider value={data}>
+        <BurgerConstructorContext.Provider value={selectedBurger}>
+          {selectedBurger && <Content />}
+        </BurgerConstructorContext.Provider>
+      </BurgerIngredientsContext.Provider>
     </div>
   );
 }
