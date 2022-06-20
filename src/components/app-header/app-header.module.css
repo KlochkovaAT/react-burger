@@ -1,0 +1,21 @@
+.app-header {
+    display: flex;
+    background-color: #1C1C21;
+    padding-left: 320px;
+    padding-right: 300px;
+    align-items: center;
+}
+
+.app-header__button {
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+.app-header__button_last {
+    margin-left: auto;
+}
+
+.app-header__logo {
+    margin-left: 112px;
+}

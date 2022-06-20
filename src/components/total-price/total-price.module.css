@@ -1,0 +1,9 @@
+.total-price {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.total-price__total {
+    display: flex;
+}

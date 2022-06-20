@@ -1,0 +1,14 @@
+.card-list {
+ margin: 0px;
+}
+
+.card-list__title {
+    margin: 0px;
+}
+
+.card-list__container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 24px;
+}
