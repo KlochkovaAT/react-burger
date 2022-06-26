@@ -4,7 +4,7 @@ import CardList from '../card-list/card-list';
 import PropTypes from 'prop-types';
 import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css';
 import { useContext } from "react";
-import BurgerIngredientsContext from '../burger-ingredients-context/burger-ingredients-context';
+import BurgerIngredientsContext from '../../contexts/burger-ingredients-context/burger-ingredients-context';
 
 const BurgerIngredients = ({ title }) => {
   const ingredients = useContext(BurgerIngredientsContext);

@@ -2,11 +2,12 @@ import TotalPrice from '../total-price/total-price';
 import ElementWithIcon from '../element-with-icon/element-with-icon';
 import styles from './burger-constructor.module.css';
 import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css';
-import { createOrderUrl } from '../../components/utils/constants';
+import { createOrderUrl } from '../../utils/constants';
 import Modal from '../modal/modal';
 import { useContext, useEffect, useState } from 'react';
 import OrderDetails from '../order-details/order-details';
-import BurgerConstructorContext from '../burger-constructor-context/burger-constructor-context';
+import BurgerConstructorContext from '../../contexts/burger-constructor-context/burger-constructor-context';
+import { checkResponse } from '../../utils/api';
 
 const BurgerConstructor = () => {
   const [isActive, setIsActive] = useState(false);
@@ -35,12 +36,7 @@ const BurgerConstructor = () => {
         ingredients: getIngredientsIDs(),
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка ${res.status}`);
-      })
+      .then(checkResponse)
       .then((resJson) => {
         setOrderInfo(resJson.order.number);
       })

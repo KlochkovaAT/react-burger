@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import stylesModal from './modal.module.css';
-import { modalElementId } from '../utils/constants';
+import { modalElementId } from '../../utils/constants';
 import PropTypes from 'prop-types'
 import { useEffect } from 'react';
 

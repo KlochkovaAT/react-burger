@@ -13,8 +13,10 @@ const dataPropTypes = PropTypes.shape({
   calories: PropTypes.number.isRequired,
 });
 
-const dataUrl = 'https://norma.nomoreparties.space/api/ingredients';
-const modalElementId = 'react-modals';
-const createOrderUrl = 'https://norma.nomoreparties.space/api/orders';
+const baseUrl = 'https://norma.nomoreparties.space/api'
+const ingredientsUrl = `${baseUrl}/ingredients`;
+const createOrderUrl = `${baseUrl}//orders`;
 
-export { dataPropTypes, dataUrl, modalElementId, createOrderUrl };
+const modalElementId = 'react-modals';
+
+export { dataPropTypes, modalElementId, ingredientsUrl, createOrderUrl };
