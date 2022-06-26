@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Header from '../app-header/app-header';
 import styles from './app.module.css';
 import Content from '../content/content';
-import { dataUrl } from '../utils/constants';
+import { ingredientsUrl } from '../../utils/constants';
+import BurgerIngredientsContext from '../../contexts/burger-ingredients-context/burger-ingredients-context';
+import BurgerConstructorContext from '../../contexts/burger-constructor-context/burger-constructor-context';
+import { checkResponse } from '../../utils/api';
 
 function App() {
   const [data, setData] = useState();
@@ -18,13 +21,8 @@ function App() {
   }, [data]);
 
   useEffect(() => {
-    fetch(dataUrl)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка ${res.status}`);
-      })
+    fetch(ingredientsUrl)
+      .then(checkResponse)
       .then((resJson) => {
         setData(resJson.data);
       })
@@ -34,7 +32,11 @@ function App() {
   return (
     <div className={styles.App}>
       <Header />
-      {selectedBurger && <Content data={data} burger={selectedBurger} />}
+      <BurgerIngredientsContext.Provider value={data}>
+        <BurgerConstructorContext.Provider value={selectedBurger}>
+          {selectedBurger && <Content />}
+        </BurgerConstructorContext.Provider>
+      </BurgerIngredientsContext.Provider>
     </div>
   );
 }

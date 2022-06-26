@@ -1,22 +1,50 @@
 import TotalPrice from '../total-price/total-price';
-import PropTypes from 'prop-types';
 import ElementWithIcon from '../element-with-icon/element-with-icon';
 import styles from './burger-constructor.module.css';
 import scrollBarStyle from '../custom-scrollbar/custom-scrollbar.module.css';
-import { dataPropTypes } from '../../components/utils/constants';
+import { createOrderUrl } from '../../utils/constants';
 import Modal from '../modal/modal';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import OrderDetails from '../order-details/order-details';
+import BurgerConstructorContext from '../../contexts/burger-constructor-context/burger-constructor-context';
+import { checkResponse } from '../../utils/api';
 
-const BurgerConstructor = ({ bun, ingredients }) => {
+const BurgerConstructor = () => {
   const [isActive, setIsActive] = useState(false);
+  const [orderInfo, setOrderInfo] = useState(null);
+  const { bun, ingredients } = useContext(BurgerConstructorContext);
+
+  useEffect(() => {
+    setIsActive(orderInfo !== null);
+  }, [orderInfo]);
+
+  const getIngredientsIDs = () => {
+    const ids = ingredients.map((ingredient) => ingredient._id);
+    ids.unshift(bun._id);
+    ids.push(bun._id);
+
+    return ids;
+  };
 
   const handleOnClick = () => {
-    setIsActive(true);
+    fetch(createOrderUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ingredients: getIngredientsIDs(),
+      }),
+    })
+      .then(checkResponse)
+      .then((resJson) => {
+        setOrderInfo(resJson.order.number);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleOnClose = () => {
-    setIsActive(false);
+    setOrderInfo(null);
   };
 
   return (
@@ -31,18 +59,16 @@ const BurgerConstructor = ({ bun, ingredients }) => {
           ))}
         </ul>
         <ElementWithIcon type={'bottom'} isLocked={true} text={`${bun.name} (низ)`} price={bun.price} thumbnail={bun.image} />
-        <TotalPrice price={bun.price + ingredients.map(({ price }) => price).reduce((prev, current) => prev + current, 0)} handleOnClick={handleOnClick}/>
+        <TotalPrice
+          price={bun.price + ingredients.map(({ price }) => price).reduce((prev, current) => prev + current, 0)}
+          handleOnClick={handleOnClick}
+        />
       </div>
       <Modal isActive={isActive} handleOnClose={handleOnClose}>
-       <OrderDetails orderId={"034536"}></OrderDetails>               
+        <OrderDetails orderId={orderInfo}></OrderDetails>
       </Modal>
     </>
   );
-};
-
-BurgerConstructor.propTypes = {
-  bun: dataPropTypes.isRequired,
-  ingredients: PropTypes.arrayOf(dataPropTypes).isRequired,
 };
 
 export default BurgerConstructor;

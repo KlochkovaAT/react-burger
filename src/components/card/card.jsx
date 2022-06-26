@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Modal from '../modal/modal';
 import DetailIngredient from '../detail-ingredient/detail-ingredient';
 import stylesCard from './card.module.css';
-import { dataPropTypes } from '../../components/utils/constants';
+import { dataPropTypes } from '../../utils/constants';
 
 const Card = (props) => {
   const { image, price, name, count } = props;
